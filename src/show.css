@@ -1,0 +1,165 @@
+/*
+  Curb Your Consumerism
+  Copyright (C) 2019  James Robert Somers
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+body {
+  font-size: 17px;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #555555;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  letter-spacing: .5px;
+}
+
+header {
+  background-color: #006CA6;
+  color: white;
+  padding: 10px;
+}
+
+h1 {
+  vertical-align: middle;
+  margin: 5px 0;
+  font-size: 1.5em;
+}
+
+h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+h1 img {
+  vertical-align: middle;
+}
+
+#menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 8px;
+}
+
+#menu a {
+  margin: 0 8px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a {
+  color: #006CA6;
+}
+
+section {
+  padding: 10px 0;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+p {
+  margin: 5px 0;
+}
+
+#stats {
+  font-size: 18px;
+}
+
+.highlight {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+#calc, .highlight {
+  font-weight: bold;
+}
+
+button, a.button, input[type=submit] {
+  width: 100%;
+  margin: 20px 0 8px 0 !important;
+  background: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 17px;
+  display: block;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+button.primary, a.button.primary, input[type=submit].primary {
+  background-color: #006CA6;
+  padding: 20px;
+  color: #ffffff;
+}
+
+button.secondary, a.button.secondary {
+  border: 1px solid #006CA6;
+  color: #006CA6;
+}
+
+#cancel {
+  font-size: 12px;
+  margin: 14px 0;
+  display: block;
+  text-decoration: none;
+}
+
+#cancel:hover {
+  text-decoration: underline;
+}
+
+#earnings, #loader-countdown {
+  text-align: center;
+  font-size: 22px;
+}
+
+#prompt-container, #quote-container {
+  color: #006CA6;
+  font-weight: bold;
+  text-align: justify;
+}
+
+#quote-author-container {
+  text-align: right;
+}
+
+#saved-time, #saved-money {
+  font-weight: bold;
+}
+
+#price {
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  width: 120px;
+  margin-left: 5px;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#donate {
+  display: none;
+}

@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Curb Your Consumerism</title>
+<link rel="stylesheet" type="text/css" href="show.css">
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+  <h1>
+    <a href="https://www.curbyourconsumerism.app?utm_source=extension">
+      <img src="curb-your-consumerism-48.png" alt="" />
+      Curb Your Consumerism
+    </a>
+  </h1>
+  <div id="menu">
+    <a href="https://twitter.com/curbconsumerism" target="_blank">Twitter</a> |
+    <a href="https://www.curbyourconsumerism.app/help?utm_source=extension" target="_blank">Help</a> |
+    <a href="settings.html" style="vertical-align: middle;"><img src="settings-16.png"></a>
+  </div>
+  <div id="stats">
+    <p id="calc-container">
+      It takes you <span id="calc" class="highlight"></span> of work to earn <span class="highlight">$<input id="price" type="number" step="any" class="highlight"></input></span>
+    </p>
+    <p>&#128176; $<span id="earnings"></span></p>
+    <p>&#9200; <span id="loader-countdown"></span></p>
+  </div>
+</header>
+<section>
+  <p id="prompt-container"><span id="prompt"></span></p>
+  <p id="quote-container">&#8220;<span id="quote"></span>&#8221;</p>
+  <p id="quote-author-container">&#8211; <span id="quote-author"></span></p>
+</section>
+<section>
+  <p>
+    <form id="event-form" action="https://www.curbyourconsumerism.app/events" method="post">
+      <input id="event-form-amount" name="amount" type="hidden">
+      <input id="event-form-url" name="url" type="hidden">
+      <input id="event-form-seconds" name="seconds" type="hidden">
+      <input id="event-form-seconds-waited" name="seconds_waited" type="hidden">
+      <input id="event-form-share-community" name="share_community" type="hidden">
+      <input id="good" class="primary" type="submit" value="Save">
+      <button id="donate" class="primary">Donate</button>
+      <button id="bad" class="secondary">Propagate consumerism</button>
+      <a id="cancel" href="#">I was taken here by mistake...</a>
+    </form>
+  </p>
+  <p id="saved-container">
+    You've saved <span id="saved-money"></span> which is worth <span id="saved-time"></span> at work.
+  </p>
+</section>
+
+<script type="application/javascript" src="browser-polyfill.min.js"></script>
+<script type="application/javascript" src="utils.js"></script>
+<script type="application/javascript" src="show.js"></script>
+</body>
+</html>

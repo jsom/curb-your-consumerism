@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Curb Your Consumerism</title>
+<link rel="stylesheet" type="text/css" href="show.css">
+<link rel="stylesheet" type="text/css" href="settings.css">
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+  <h1>
+    <a href="https://www.curbyourconsumerism.app?utm_source=extension">
+      <img src="curb-your-consumerism-48.png" alt="" />
+      Curb Your Consumerism
+    </a>
+  </h1>
+  <div id="menu">
+    <a href="https://twitter.com/curbconsumerism" target="_blank">Twitter</a> |
+    <a href="https://www.curbyourconsumerism.app/help?utm_source=extension" target="_blank">Help</a> |
+    <a href="settings.html" style="vertical-align: middle;"><img src="settings-16.png"></a>
+  </div>
+  <section>
+    To help you make better financial decisions, you'll need to enter the following information. The data is stored locally in
+    your browser and is not sent to us.
+  </section>
+</header>
+
+<section>
+  <form action="#" style="text-align: center;">
+    <label for="salary">What's your current annual salary?</label>
+    <div class="notes">
+      For a more realistic calculation enter your salary after taxes.
+    </div>
+    <p>
+      <span class="currency-input-wrapper">
+        $
+        <input type="number" id="salary" name="salary" min="0" placeholder="Salary">
+        <select id="salary-time">
+          <option value="year">per year</option>
+          <option value="week">per week</option>
+          <option value="hour">per hour</option>
+        </select>
+      </span>
+    </p>
+    <label for="hours-per-week">How many hours a week do you work?</label>
+    <div>
+      <input type="number" id="hours-per-week" min="0" placeholder="Hours per week">
+    </div>
+    <label for="share-community">Do you want to contribute to community stats?</label>
+    <div class="community notes">
+      By agreeing, you allow the extension to submit the
+      currency amount,
+      number of seconds to earn the product,
+      number of seconds you waited before making a decision
+      and the URL of the website you were buying from
+      to our servers.
+      This will contribute to the
+      <a href="https://www.curbyourconsumerism.app?utm_source=extension" target="_blank">tally of money</a>
+      saved across the community.
+      Your data is not given or sold to third parties.
+      The data may be associated with your IP address to prevent abuse of the service through rate limiting.
+      Review the <a href="https://www.curbyourconsumerism.app/privacy?utm_source=extension" target="_blank">privacy policy</a>.
+    </div>
+    <div>
+      <label for="share-community">
+        <input type="checkbox" id="share-community">
+        I agree
+      </label>
+    </div>
+    <button id="save-settings" class="primary">Save</button>
+  </form>
+</section>
+
+<script type="application/javascript" src="browser-polyfill.min.js"></script>
+<script type="application/javascript" src="utils.js"></script>
+<script type="application/javascript" src="settings.js"></script>
+</body>
+</html>
