@@ -143,7 +143,7 @@ function findPrice() {
 }
 
 function matchCheckout() {
-  return window.location.href.match(hrefRegex) || document.title.includes("Checkout");
+  return window.location.href.match(hrefRegex);
 }
 
 function handleUrlLoad() {
