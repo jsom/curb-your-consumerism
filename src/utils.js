@@ -17,19 +17,40 @@
 */
 
 const goodButtonTexts = [
+  'Save $${cost}',
+  'Save ${time} of my life',
   'Alternate dopamine hit',
   'Reduce carbon footprint',
-  'Save $${cost}',
   'Fight your programming',
-  'Save ${time} of my life',
-  'Save for a rainy day'
+  'Save for a rainy day',
 ];
 const badButtonTexts = [
-  'Propagate consumerism',
-  'Succumb',
   'Spend $${cost}',
   'Spend ${time} of my life',
-  'It\'s a rainy day'
+  'Propagate consumerism',
+  'Succumb',
+  'It\'s a rainy day',
+];
+const goodEmoji = [
+  "👍",
+  "🌱",
+  "🪴",
+  "🌲",
+];
+const badEmoji = [
+  "👎",
+  "🤡",
+  "🤡🤳",
+  "🤦‍♂️",
+  "🤦‍♀️",
+  "💸",
+  "🥀",
+  "🧐",
+  "🤨",
+  "😳",
+  "😥",
+  "😨",
+  "🥺",
 ];
 const minimumCountdown = 60;
 const secondsInHour = 3600;
@@ -94,7 +115,8 @@ const emptySettings = {
   shareCommunity: false,
   spendingHistory: [],
   savingsHistory: [],
-  onboarded: false
+  onboarded: false,
+  views: 0,
 };
 
 async function getSettings() {

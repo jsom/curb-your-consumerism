@@ -54,6 +54,8 @@ let url = null;
 let price = null;
 let goodButtonTextTemplate = null;
 let badButtonTextTemplate = null;
+let goodEmojiTemplate = null;
+let badEmojiTemplate = null;
 let donateUrl = null;
 
 const baseUrl = 'https://www.curbyourconsumerism.app';
@@ -80,8 +82,8 @@ async function startCountdown(newPrice) {
 
   animationTime = Math.max(seconds, minimumCountdown);
 
-  goodButtonEl.value = buildText(goodButtonTextTemplate, price, timeDescription);
-  badButtonEl.innerText = buildText(badButtonTextTemplate, price, timeDescription);
+  goodButtonEl.value = buildText(goodButtonTextTemplate, price, timeDescription, goodEmojiTemplate);
+  badButtonEl.innerText = buildText(badButtonTextTemplate, price, timeDescription, badEmojiTemplate);
 
   clearInterval(countdownCounter);
   updateCountdown();
@@ -98,10 +100,15 @@ function calculateSalaryPerHour(salary, salaryTime, hoursPerWeek) {
   }
 }
 
-function buildText(template, price, timeDescription) {
-  return template
+function buildText(template, price, timeDescription, emoji) {
+  const text = template
     .replace("${cost}", price)
     .replace("${time}", timeDescription);
+  if (emoji) {
+    return text + " " + emoji;
+  } else {
+    return text;
+  }
 }
 
 async function updateSavingsView(settings) {
@@ -215,6 +222,7 @@ port.onMessage.addListener(async (message) => {
     const savedMoney = settings.savedMoney + parseFloat(price);
     const savedTime = settings.savedTime + seconds;
     const savingsHistory = settings.savingsHistory;
+    const views = settings.views + 1;
 
     savingsHistory.push({
       domain: getDomain(url),
@@ -225,7 +233,8 @@ port.onMessage.addListener(async (message) => {
     await saveSettings({
       savedMoney: savedMoney,
       savedTime: savedTime,
-      savingsHistory: savingsHistory
+      savingsHistory: savingsHistory,
+      views: views,
     });
 
     const differenceInSeconds = Math.max(Math.round((Date.now() - startTime) / 1000), 0);
@@ -284,8 +293,11 @@ port.onMessage.addListener(async (message) => {
   promptCounter = setInterval(updatePrompt, 60000);
 
   // Setup calculation
-  goodButtonTextTemplate = random(goodButtonTexts);
-  badButtonTextTemplate = random(badButtonTexts);
+  const { views } = await getSettings();
+  goodButtonTextTemplate = views < 5 ? goodButtonTexts[0] : random(goodButtonTexts);
+  badButtonTextTemplate = views < 5 ? badButtonTexts[0] : random(badButtonTexts);
+  goodEmojiTemplate = random(goodEmoji);
+  badEmojiTemplate = random(badEmoji);
 
   donateConfig = await getDonateConfig();
 
