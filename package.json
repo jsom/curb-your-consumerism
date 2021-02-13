@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start:firefox": "web-ext run --target firefox-desktop --source-dir ./src",
+    "start:chromium": "web-ext run --target chromium --source-dir ./src",
+    "build": "web-ext build -s src"
+  },
+  "devDependencies": {
+    "web-ext": "^5.5.0"
+  }
+}
