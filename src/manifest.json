@@ -21,7 +21,8 @@
   "content_scripts": [
     {
       "matches": ["https://*/*"],
-      "js": ["browser-polyfill.min.js", "curb-your-consumerism.js"]
+      "js": ["browser-polyfill.min.js", "curb-your-consumerism.js"],
+      "css": ["curb-your-consumerism.css"]
     }
   ]
 }

@@ -118,7 +118,7 @@ function getFontSize(textNode) {
   }
 }
 
-const observer = new MutationObserver(findPrice);
+const observer = new MutationObserver(findPriceAndSendToExtension);
 
 function findBySelector() {
   const match = document.querySelector(targetClasses);
@@ -135,10 +135,15 @@ function findByScan() {
 }
 
 function findPrice() {
-  const result = findBySelector() || findByScan();
-  if (result) {
+  return findBySelector() || findByScan();
+}
+
+function findPriceAndSendToExtension() {
+  const price = findPrice();
+
+  if (price) {
     observer.disconnect();
-    sendPriceMessage(result);
+    sendPriceMessage(price);
   }
 }
 
@@ -146,10 +151,58 @@ function matchCheckout() {
   return window.location.href.match(hrefRegex);
 }
 
+function shouldSuggestSmile() {
+  return window.location.host.match(/amazon./gi) &&
+   !window.location.host.match(/smile.amazon./gi) &&
+   !document.getElementById("smile-suggestion");
+}
+
+function formatSmileMessage() {
+  const price = findPrice() * 0.0005;
+  if (price > 1) {
+    return "Hey! 0.5% or around $" + price.toFixed(2);
+  } else {
+    return "Hey! 0.5%";
+  }
+}
+
+function getSmileHref() {
+  return document.location.href.replace("www.", "smile.");
+}
+
 function handleUrlLoad() {
   if (matchCheckout()) {
     console.log("curb-your-consumerism.js: match", window.location.href);
     observer.observe(body, { childList: true, subtree: true });
+    if (shouldSuggestSmile()) {
+      const smilePopup = document.createElement("div");
+      smilePopup.id = "smile-suggestion";
+
+      const percent = document.createElement("b");
+      percent.innerText = formatSmileMessage();
+      const text1 = document.createTextNode(" of your purchase may be able to be donated towards climate change causes through ");
+
+      const link = document.createElement("a");
+      link.href = "https://smile.amazon.com/gp/chpf/about/";
+      link.innerText = "Amazon Smile";
+
+      const text2 = document.createTextNode(".");
+
+      const smileButton = document.createElement("a");
+      smileButton.classList = "smile-suggestion-button primary";
+      smileButton.innerText = "Switch to Amazon Smile";
+      smileButton.href = getSmileHref();
+
+      const closeButton = document.createElement("a");
+      closeButton.classList = "smile-suggestion-close-button";
+      closeButton.innerText = "x";
+      closeButton.onclick = () => {
+        document.body.removeChild(smilePopup);
+      };
+
+      smilePopup.append(percent, text1, link, text2, smileButton, closeButton);
+      document.body.appendChild(smilePopup);
+    }
   } else {
     observer.disconnect();
   }
